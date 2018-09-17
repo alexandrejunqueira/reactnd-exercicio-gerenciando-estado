@@ -28,16 +28,16 @@ class App extends Component {
   }
   
   answerTrue() {
-    this.checkAnswer(true);
+    this.evaluateAnswer(true);
   }
   
   answerFalse() {
-    this.checkAnswer(false);
+    this.evaluateAnswer(false);
   }
   
-  checkAnswer(answer) {
+  evaluateAnswer(answer) {
     const {value1, value2, value3, proposedAnswer} = this.question();
-    const correctResult = this.state.value1 + this.state.value2 + this.state.value3;
+    const correctAnswer = this.state.value1 + this.state.value2 + this.state.value3;
 	this.setState(state => {
     	return {
             value1,
@@ -45,7 +45,7 @@ class App extends Component {
       		value3,
       		proposedAnswer,
 			numQuestions: state.numQuestions + 1,
-          	numCorrect: (this.state.proposedAnswer === correctResult) === answer ? state.numCorrect + 1 : state.numCorrect
+          	numCorrect: (this.state.proposedAnswer === correctAnswer) === answer ? state.numCorrect + 1 : state.numCorrect
         }
     });
   }
